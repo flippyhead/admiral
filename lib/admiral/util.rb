@@ -6,7 +6,7 @@ module Admiral
   module Util
 
     SUCCESS_STATS = [:create_complete, :update_complete, :update_rollback_complete]
-    FAILED_STATS = [:create_failed, :update_failed]
+    FAILED_STATS = [:create_failed, :update_failed, :rollback_complete]
     DEFAULT_RECIPES = [].join(",")
 
     def opsworks
@@ -127,14 +127,6 @@ module Admiral
         puts "Deleting old instance #{instance[:hostname]}, #{instance[:instance_id]}"
         opsworks.delete_instance(:instance_id => instance[:instance_id])
       end
-    end
-
-    def environment
-      ENV["ENVIRONMENT"] || "my"
-    end
-
-    def stack_name
-      "#{environment}-meteor"
     end
 
     def get_required(name)

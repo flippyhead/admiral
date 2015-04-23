@@ -6,16 +6,18 @@ module Admiral
   class Cli < Thor
     include Util
 
-    desc "provision NAME", "Provisions stack NAME"
+    desc "provision ENVIRONMENT", "Provisions ENVIRONMENT"
 
-    option :template, desc: 'A CloudFormation template', default: "cloud-formation.json"
-    option :params, desc: 'Parameter definitions for CloudFormation template', default: "default.json"
+    option :template, desc: 'A CloudFormation template', default: "CloudFormation.template"
+    option :params, desc: 'Parameter definitions for CloudFormation template.'
     option :update_instances, desc: 'Replace and update existing instances', type: :boolean, default: 'false'
 
-    def provision(stack_name)
-      template = File.read options[:template]
-      params = JSON.parse File.read(options[:params])
+    attr_accessor :environment
 
+    def provision(env)
+      self.environment = env
+      template = File.read options[:template]
+      params = JSON.parse File.read(options[:params] || "#{environment}.json")
       cf_stack = cfm.stacks[stack_name]
 
       if cf_stack.exists?
@@ -41,27 +43,15 @@ module Admiral
       end
     end
 
-    desc "destroy", "Destroys the Meteor cluster"
-    def destroy
-      cfm = AWS::CloudFormation.new
+    desc "destroy ENVIRONMENT", "Destroys ENVIRONMENT"
+    def destroy(env)
+      self.environment = env
       cf_stack = cfm.stacks[stack_name]
+
       if cf_stack.exists?
-        puts "Destroying environment #{environment}"
-
-        layer_id = cf_query_output(cf_stack, "LayerId")
-
-        get_all_instances(layer_id).each do |instance|
-          puts "Stopping instance #{instance[:hostname]}"
-          opsworks.stop_instance({:instance_id => instance[:instance_id]})
-          wait_for_instance(instance[:instance_id], "stopped")
-
-          puts "Deleting instance #{instance[:hostname]}"
-          opsworks.delete_instance({:instance_id => instance[:instance_id]})
-          wait_for_instance(instance[:instance_id], "nonexistent")
-        end
-
-        puts "Deleting OpsWorks stack #{stack_name}"
+        puts "Deleting stack #{stack_name}"
         cf_stack.delete
+        wait_for_cf_stack_op_to_finish(cf_stack)
       else
         puts "Environment #{environment} does not exist"
       end
@@ -116,6 +106,16 @@ module Admiral
           name: "deploy",
         }
       )
+    end
+
+    private
+
+    def stack_name
+      "#{@environment}-#{name}"
+    end
+
+    def name
+      ENV["NAME"] || "test"
     end
 
   end
