@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/admiral/cli'
+require 'admiral'
 
 Admiral::Cli.start(ARGV)
