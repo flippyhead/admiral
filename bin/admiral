@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+Bundler.require
+
 require 'admiral/cli'
+
+Admiral::Tasks.constants.each do |const|
+  tasks = Admiral::Tasks.const_get const
+  Admiral::Cli.register tasks, tasks::NAME, tasks::USAGE, tasks::DESCRIPTION
+end
 
 Admiral::Cli.start(ARGV)
