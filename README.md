@@ -1,6 +1,6 @@
 # Admiral
 
-TODO: Write a gem description
+Admiral is a collection of modules designed to simplify controlling AWS OpsWorks, CloudFormation and EC2 instances. Currently, its focus is on deploying Meteor applications but can be expanded to support any application types.
 
 ## Installation
 
@@ -18,7 +18,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+On your command line type:
+
+    $ admiral help
+
+To see a list of available commands.
+
+# Available modules:
+
+* admiral-cloudformation
+* admiral-opsworks
+* admiral-meteor
 
 ## Contributing
 
