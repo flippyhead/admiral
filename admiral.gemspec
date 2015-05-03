@@ -1,11 +1,9 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'admiral/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "admiral"
-  spec.version       = Admiral::VERSION
+  spec.version       = '0.0.1'
   spec.authors       = ["Peter T. Brown"]
   spec.email         = ["p@ptb.io"]
   spec.description   = %q{A command line tool for wielding cloudformation templates.}

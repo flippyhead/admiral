@@ -1,34 +1,25 @@
 # Admiral
 
-Admiral is a collection of modules designed to simplify controlling AWS OpsWorks, CloudFormation and EC2 instances. Currently, its focus is on deploying Meteor applications but can be expanded to support any application types.
+Admiral is a command line utility for managing AWS CloudFormation and OpsWorks stacks, and for deploying applications to EC2 instances. Admiral is modular in design -- you include just the modules you need, dependencies are automatically resolved.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Currently there are four Admiral modules. Simply install what you need to get started.
 
-    gem 'admiral'
+* [admiral](https://github.com/flippyhead/admiral): the core command line utility and binary.
+* [admiral-cloudformation](https://github.com/flippyhead/admiral-cloudformation): tasks for managing AWS CloudFormation templates by environment.
+* [admiral-opsworks](https://github.com/flippyhead/admiral-opsworks): tasks for managing AWS OpsWorks stacks and instances.
+* [admiral-meteor](https://github.com/flippyhead/admiral-meteor) : tasks for building and deploying Meteor applications.
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install admiral
+Please visit the above repositories for details on each module.
 
 ## Usage
 
-On your command line type:
+Install one of the above modules then from your command line:
 
     $ admiral help
 
-To see a list of available commands.
-
-# Available modules:
-
-* admiral-cloudformation
-* admiral-opsworks
-* admiral-meteor
+To see a list of available module subcommands and options.
 
 ## Contributing
 
