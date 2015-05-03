@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["p@ptb.io"]
   spec.description   = %q{A command line tool for wielding cloudformation templates.}
   spec.summary       = %q{A command line tool for wielding cloudformation templates.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/flippyhead/admiral"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
