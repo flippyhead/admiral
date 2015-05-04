@@ -23,8 +23,6 @@ Install one of the above modules then from your command line:
 
 To see a list of available module subcommands and options.
 
-This project was heavily inspired by [this blog post](http://www.thoughtworks.com/mingle/news/scaling/2015/01/06/How-Mingle-Built-ElasticSearch-Cluster.html) -- thanks ThoughtWorks!
-
 ## Contributing
 
 1. Fork it
@@ -32,3 +30,5 @@ This project was heavily inspired by [this blog post](http://www.thoughtworks.co
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+This project was heavily inspired by [this blog post](http://www.thoughtworks.com/mingle/news/scaling/2015/01/06/How-Mingle-Built-ElasticSearch-Cluster.html) -- thanks ThoughtWorks!
