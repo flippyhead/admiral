@@ -2,6 +2,8 @@
 
 Admiral is a command line utility for managing AWS CloudFormation and OpsWorks stacks, and for deploying applications to EC2 instances. Admiral is modular in design -- you include just the modules you need, dependencies are automatically resolved.
 
+Developed in Seattle at [Fetching](http://fetching.io).
+
 ## Installation
 
 Currently there are four Admiral modules. Simply install what you need to get started.
