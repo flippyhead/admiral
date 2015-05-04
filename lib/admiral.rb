@@ -1,1 +1,0 @@
-require "admiral/version"

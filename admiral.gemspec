@@ -3,7 +3,7 @@ lib = File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |spec|
   spec.name          = "admiral"
-  spec.version       = '0.0.1'
+  spec.version       = '0.0.2'
   spec.authors       = ["Peter T. Brown"]
   spec.email         = ["p@ptb.io"]
   spec.description   = %q{A command line tool for wielding cloudformation templates.}
